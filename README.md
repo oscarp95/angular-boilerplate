@@ -1,0 +1,2 @@
+# angular-boilerplate
+Angular project 
