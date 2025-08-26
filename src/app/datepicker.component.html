@@ -1,0 +1,27 @@
+<div class="calendar-container">
+    <div class="calendar-header">
+        <select [(ngModel)]="currentMonth" (change)="onMonthOrYearChange()" class="custom_select">
+            <option *ngFor="let m of months; index as i" [value]="i">{{ m }}</option>
+        </select>
+        <select [(ngModel)]="currentYear" (change)="onMonthOrYearChange()" class="custom_select center">
+            <option *ngFor="let y of years" [value]="y">{{ y }}</option>
+        </select>
+    </div>
+
+    <div class="weekdays">
+        <div *ngFor="let wd of weekDays">{{ wd }}</div>
+    </div>
+
+    <div class="days">
+        <div *ngFor="let day of daysInMonth"
+            (click)="selectDay(day)"
+            [ngClass]="{
+                'other-month': day.monthOffset !== 0,
+                'selected': day.day === selectedDay.day && day.monthOffset === selectedDay.monthOffset,
+                'today': isToday(day)
+            }">
+            {{ day.day }}
+        </div>
+    </div>
+</div>
+
